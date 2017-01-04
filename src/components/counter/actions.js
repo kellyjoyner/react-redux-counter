@@ -1,0 +1,46 @@
+export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
+export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
+
+export function increment() {
+  return {
+    type: INCREMENT_COUNTER
+  };
+}
+
+export function decrement() {
+  return {
+    type: DECREMENT_COUNTER
+  };
+}
+
+export function incrementIfOdd() {
+  return (dispatch, getState) => {
+    const { value } = getState();
+
+    if (value % 2 === 0) {
+      return;
+    }
+
+    dispatch(increment());
+  };
+}
+
+export function incrementIfEven() {
+  return (dispatch, getState) => {
+    const { value } = getState();
+
+    if (value % 2 !== 0) {
+      return;
+    }
+
+    dispatch(increment());
+  };
+}
+
+export function incrementAsync() {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(increment());
+    }, 1000);
+  };
+}
